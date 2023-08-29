@@ -26,7 +26,7 @@ O app terá quatro telas principais, sendo:
 
 * Gabriel Santos Barbosa
 * Rainier Barbosa dos Santos Viana
-* Rafael(.)
+* Rafael Soares dos Santos
 
 
 Para o controle de tarefas e gerenciamento do projeto irá ser utilizado o metodo Kanban juntamente da ferramenta Trello.
