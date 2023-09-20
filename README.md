@@ -16,7 +16,7 @@ O Aplicativo é um Sistema de controle financeiro, que tem como objetivo ajudar 
 * Rafael Soares dos Santos.
 
 
-#Links:
+# Links:
 
 * Figma: 
-https://www.figma.com/file/wg4Y78TPAmDscMlB6JSCil/Prot%C3%B3tipo--?type=design&node-id=319%3A882&mode=design&t=mxG9T4hjMuqSBEbv-1
+https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white
