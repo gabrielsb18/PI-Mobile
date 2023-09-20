@@ -1,3 +1,6 @@
+![image](https://github.com/gabrielsb18/PI_Mobile/assets/131284177/faee0d1b-4014-4a2d-ba52-bd1ba98783df)
+
+
 # App de Gestão financeira - PI Mobile
 
 *Projeto em desenvolvimento para a máteria de Projeto Integrado Mobile, do Centro Universitário IESB*
