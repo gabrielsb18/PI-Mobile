@@ -1,7 +1,6 @@
 ![image](https://github.com/gabrielsb18/PI_Mobile/assets/131284177/e4fa420a-e7de-438a-ac34-6f847a3b090e)
 
 
-
 # App de Gestão financeira - PI Mobile
 
 *Projeto em desenvolvimento para a máteria de Projeto Integrado Mobile, do Centro Universitário IESB*
@@ -18,6 +17,4 @@ O Aplicativo é um Sistema de controle financeiro, que tem como objetivo ajudar 
 
 # Links:
 
-* Figma:
-
-https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white
+<a href = "https://www.figma.com/file/wg4Y78TPAmDscMlB6JSCil/Prot%C3%B3tipo--?type=design&node-id=0%3A1&mode=design&t=pSfQfkJ6e6m1EBfG-1https://www.figma.com/file/wg4Y78TPAmDscMlB6JSCil/Prot%C3%B3tipo--?type=design&node-id=0%3A1&mode=design&t=pSfQfkJ6e6m1EBfG-1" <img src= "https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white> </a>
