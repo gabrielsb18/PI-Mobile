@@ -13,8 +13,3 @@ O Aplicativo é um Sistema de controle financeiro, que tem como objetivo ajudar 
 * Gabriel Santos Barbosa;
 * Rainier Barbosa dos Santos Viana;
 * Rafael Soares dos Santos.
-
-
-# Links:
-
-<a href = "//www.figma.com/file/wg4Y78TPAmDscMlB6JSCil/Prot%C3%B3tipo--?type=design&node-id=0%3A1&mode=design&t=pSfQfkJ6e6m1EBfG-1"> <img src= "https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white</a>
