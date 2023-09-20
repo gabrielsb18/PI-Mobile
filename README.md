@@ -18,5 +18,6 @@ O Aplicativo é um Sistema de controle financeiro, que tem como objetivo ajudar 
 
 # Links:
 
-* Figma: 
-![image](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+* Figma:
+
+https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white
