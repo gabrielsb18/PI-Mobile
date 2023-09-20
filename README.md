@@ -1,4 +1,5 @@
-![image](https://github.com/gabrielsb18/PI_Mobile/assets/131284177/faee0d1b-4014-4a2d-ba52-bd1ba98783df)
+![image](https://github.com/gabrielsb18/PI_Mobile/assets/131284177/e4fa420a-e7de-438a-ac34-6f847a3b090e)
+
 
 
 # App de Gestão financeira - PI Mobile
