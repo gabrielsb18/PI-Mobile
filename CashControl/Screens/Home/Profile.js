@@ -1,20 +1,20 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 
-const Teste2 = () => {
+const Profile = () => {
   return (
     <View style = {styles.container}>
-      <Text>Teste2</Text>
+      <Text>Profile</Text>
     </View>
   )
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+})
 
-export default Teste2
+export default Profile

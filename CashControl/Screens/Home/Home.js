@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image} from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 {/* lib gradiente do header*/}
 import {LinearGradient} from 'expo-linear-gradient';
 {/* lib icon menu*/}
@@ -28,10 +28,14 @@ export default function Home() {
       colors = {['rgba(155, 245, 0, 1)', 'rgba(120, 189, 0, 1)']}
       style = {styles.headerHome}>
         <View style = {styles.row1}>
-          <Image
-          source = {require('../../assets/Images/Perfil_Usuario.png')} style = {styles.imgProfile}/> 
-          <Image
-          source = {require('../../assets/Images/Button_menu.png')} style = {styles.imgMenu}/>
+          <TouchableOpacity>
+            <Image
+            source = {require('../../assets/Images/Perfil_Usuario.png')} style = {styles.imgProfile}/> 
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image
+            source = {require('../../assets/Images/Button_menu.png')} style = {styles.imgMenu}/>
+          </TouchableOpacity>
         </View>
           <Text style = {styles.msgWelcome}>Bem Vindo(a) {'\n'}Usuário</Text>
       </LinearGradient>
