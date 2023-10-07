@@ -79,11 +79,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#9BF500',
   },
 
-  imgProfile: {
-    width: 58,
-    height: 54,
-    /*borderRadius: 100 Aplicando em qualquer imagem*/
-  },
+  // imgProfile: {
+  //   width: 58,
+  //   height: 54,
+  //   /*borderRadius: 100 Aplicando em qualquer imagem*/
+  // },
 
   imgMenu: {
     width: 50,
@@ -131,8 +131,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 40,
-    marginTop: 60,
+    padding: 26,
+    marginTop:-46
   },
 
   box1:{
