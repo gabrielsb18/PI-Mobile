@@ -1,7 +1,7 @@
 ![image](https://github.com/gabrielsb18/PI_Mobile/assets/131284177/e4fa420a-e7de-438a-ac34-6f847a3b090e)
 
 
-# App de Gestão financeira - PI Mobile
+# Cash Control - PI Mobile
 
 *Projeto em desenvolvimento para a disciplina de Projeto Integrado Mobile, do Centro Universitário IESB*
 
