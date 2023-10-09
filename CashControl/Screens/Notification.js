@@ -57,7 +57,7 @@ const subtitleBox = StyleSheet.create({
 const Notification = () => {
   return (
     <View style={styles.container}>
-      <Image style={styles.tinyLogo} source={require('../../CashControl/assets/Images/lembrete.svg')}/> 
+      <Image style={styles.tinyLogo} source={require('../assets/lembrete.svg')}/> 
       <Text style={headerBox.container}>Lembrete</Text>
       <Text style={textBox.container}>Pagamento - Conta de Luz</Text>
       <Text style={subtitleBox.container}>10/9/2023</Text>
