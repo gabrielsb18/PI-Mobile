@@ -2,6 +2,7 @@ import { View, StyleSheet, Image, SafeAreaView, TextInput } from 'react-native';
 import { Button, Text } from 'react-native-paper';
 import { useFonts } from 'expo-font';
 import React, { useEffect, useState } from 'react';
+import Cadastro from '../Cadastro/Cadastro';
 
 const Login = ({ navigation }) => {
   //useStates pra cuidar do login
@@ -10,22 +11,35 @@ const Login = ({ navigation }) => {
 
   //mexi nesse useFonts pra ver se aquela const era necessária, parece que não
   //qualquer coisa só editar até a fonte dar certo, mas deve funcionar
-  useFonts({
-    Inter: require('../assets/fonts/Inter-Variable.ttf'),
-  });
+  /*useFonts({
+  
+    InterVariable: require('../assets/Fonts/InterVariable.ttf'),
+  });*/
+
+  const [fontsLoaded] = useFonts({
+    InterRegular:require('../../assets/Fonts/InterRegular.ttf'),
+    InterMedium:require('../../assets/Fonts/InterMedium.ttf'),
+    InterBold:require('../../assets/Fonts/InterBold.ttf'),
+    InterLight:require('../../assets/Fonts/InterLight.ttf'),
+    InterVariable: require('../../assets/Fonts/InterVariable.ttf')
+    });
+
+   if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <View style={styles.container}>
       <Image
-        style={{ height: 240, width: '100%' }}
-        source={require('../assets/images/shop.png')}
+        style={{height: 240, width: '100%' }}
+        source={require('../../assets/Images/shop.png')}
       />
       <View style={styles.overlay} />
       <View style={styles.overlay2} />
       <View style={styles.loginArea}>
         <Text
           style={{
-            fontFamily: 'Inter',
+            fontFamily: 'InterVariable',
             textAlign: 'center',
             marginTop: 14,
             fontSize: 32,
@@ -36,7 +50,7 @@ const Login = ({ navigation }) => {
         </Text>
         <Text
           style={{
-            fontFamily: 'Inter',
+            fontFamily: 'InterVariable',
             fontSize: 12,
             textAlign: 'center',
             color: '#2D5300',
@@ -62,7 +76,7 @@ const Login = ({ navigation }) => {
         {/*por enquanto o botão de restaurar senha é só texto inerte*/}
         <Text
           style={{
-            fontFamily: 'Inter',
+            fontFamily: 'InterVariable',
             marginTop: 13,
             color: '#2D5300',
             textAlign: 'center',
@@ -72,7 +86,7 @@ const Login = ({ navigation }) => {
         <Button
           contentStyle={{ height: 50 }}
           labelStyle={{
-            fontFamily: 'Inter',
+            fontFamily: 'InterVariable',
             fontSize: 16,
             fontWeight: 400,
             letterSpacing: 0,
@@ -90,7 +104,7 @@ const Login = ({ navigation }) => {
         </Button>
         <Button
           labelStyle={{
-            fontFamily: 'Inter',
+            fontFamily: 'InterVariable',
             fontSize: 11,
             fontWeight: 400,
             letterSpacing: 0,
@@ -131,7 +145,7 @@ const styles = StyleSheet.create({
   overlay: {
     width: '120%',
     height: '40%',
-    borderRadius: '50%',
+    borderRadius: 50,
     position: 'absolute',
     backgroundColor: '#9BF500',
     top: '16%',
@@ -140,7 +154,7 @@ const styles = StyleSheet.create({
   overlay2: {
     width: '120%',
     height: '34%',
-    borderRadius: '50%',
+    borderRadius: 50,
     position: 'absolute',
     backgroundColor: '#3EAB3D',
     top: '22%',
@@ -156,7 +170,7 @@ const styles = StyleSheet.create({
     borderColor: 'lightgray',
     borderStyle: 'solid',
     borderWidth: 1,
-    fontFamily: 'Inter',
+    fontFamily: 'InterVariable',
     fontSize: 14,
   },
 });
