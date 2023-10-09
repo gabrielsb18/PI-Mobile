@@ -13,7 +13,7 @@ import { useFonts } from 'expo-font';
 
 const Cadastro = ({ navigation }) => {
   useFonts({
-    Inter: require('../assets/fonts/Inter-Variable.ttf'),
+    Inter: require('../../assets/Fonts/InterVariable.ttf'),
   });
 
   const [isSelected, setSelection] = useState(false);
@@ -29,7 +29,7 @@ const Cadastro = ({ navigation }) => {
           style={styles.returnButtonContainer}>
           <Image
             style={styles.returnButton}
-            source={require('../assets/images/return-button-1.png')}
+            source={require('../../assets/Images/return-button-1.png')}
           />
         </TouchableOpacity>
         <Text style={styles.headerText}>Realização de cadastro</Text>

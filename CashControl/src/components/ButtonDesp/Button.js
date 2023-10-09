@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     viewreceitas:{
         width: '84%',
         height: '12%',
+        marginTop: -20 /*margin do topo*/
     },
 
     receitas: {

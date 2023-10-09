@@ -3,8 +3,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Ionicons, Octicons} from '@expo/vector-icons'
 
 import Home from '../../Screens/Home/Home';
-import Teste1 from '../../Screens/Home/Teste1';
-import Teste2 from '../../Screens/Home/Teste2';
+import Statistics from '../../Screens/Statistics/Statistics';
+import Notification from '../../Screens/Notification';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,21 +22,23 @@ export default function RouterTab() {
         <Tab.Screen name = "Home"
           component = {Home}
           options={{
-            headerShown: false,
+            headerShown: false, /*propriedade responsável pelo header*/
             tabBarIcon: ({color, size}) => <Octicons name = "home" color={color} size={30}/>,
             tabBarLabel: "•",
           }}/>
 
-        <Tab.Screen name = "page1"
-          component = {Teste1}
+        <Tab.Screen name = "Statistics"
+          component = {Statistics}
           options = {{
+            headerShown: false,
             tabBarIcon: ({ color, size}) => <Octicons name = "history" color={color} size={25}/>,
             tabBarLabel: "•"
           }}/>
 
-        <Tab.Screen name = "page2"
-          component = {Teste2}
+        <Tab.Screen name = "Notification"
+          component = {Notification}
           options = {{
+            headerShown: false,
             tabBarIcon: ({ color, size}) => <Ionicons name="notifications-outline" size={30} color= {color}/>,
             tabBarLabel: "•"
           }}/>

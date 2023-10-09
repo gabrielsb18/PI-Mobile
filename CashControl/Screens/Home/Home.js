@@ -1,13 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
-{/* lib gradiente do header*/}
-import {LinearGradient} from 'expo-linear-gradient';
-{/* lib icon menu*/}
-import {Feather} from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import Button_Desp_e_Rec from '../../src/components/Button_Desp_e_Rec/Button.js';
+import {LinearGradient} from 'expo-linear-gradient'; {/* lib gradiente do header*/}
+import Button_Desp_e_Rec from '../../src/components/ButtonDesp/Button.js';
+import { FlatList } from 'react-native-gesture-handler';
+import Movements from '../../src/components/Movements/Movements.js';
+import { useState } from 'react';
 
+
+ const list = [{
+   id: 1,
+   label: 'Alimentação',
+   value: '800,00',
+   date: '10/01/23',
+   type: 0, //1 para receita e 0 para despesa
+   description: 'Compra do Mês'
+  }]
+
+  
 export default function Home() {
+  const [showValue, setShowValue] = useState (false)
+  
+  /* Lógica Botão Menu*/
+  const navigation = useNavigation();
+    const abridrawer = () => {
+      navigation.openDrawer(); /* openDrawer = Abre nosso drawer*/
+    };
+  //
+
   const [fontsLoaded] = useFonts({
     InterRegular:require('../../assets/Fonts/InterRegular.ttf'),
     InterMedium:require('../../assets/Fonts/InterMedium.ttf'),
@@ -32,7 +52,7 @@ export default function Home() {
             <Image
             source = {require('../../assets/Images/Perfil_Usuario.png')} style = {styles.imgProfile}/> 
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={abridrawer}> 
             <Image
             source = {require('../../assets/Images/Button_menu.png')} style = {styles.imgMenu}/>
           </TouchableOpacity>
@@ -44,8 +64,12 @@ export default function Home() {
         <View style ={styles.saldoTotal}>
           <Text style ={{letterSpacing: -0.3, fontSize: 15, fontFamily: 'InterLight'}}>Seu saldo total</Text>
           <Text style ={{fontSize: 32, marginTop: 16, fontFamily: 'InterBold' }}>R$ 5.000,00</Text>
+          
+          <TouchableOpacity>
           <Image
           source = {require('../../assets/Images/Eye_Saldo.png')} style = {styles.imgEye}/>
+          </TouchableOpacity>
+
         </View>
       
       </View>
@@ -63,6 +87,23 @@ export default function Home() {
         </View>
 
         <Button_Desp_e_Rec/>
+
+      <View style = {styles.textsTr}>
+        <Text style = {styles.TitleTr}>Últimas transações</Text>
+        <TouchableOpacity>
+          <Text style = {styles.textView}>View All</Text>
+        </TouchableOpacity>
+      </View>
+
+      <FlatList
+        style ={styles.FlList}
+        data ={list}
+        keyExtractor = {(item) => String(item.id)} /* Passando valor para String*/
+        showsVerticalScrollIndicator = {false} /*barra de scrool vertical*/
+        renderItem ={({item}) => <Movements data={item}/>}
+        contentContainerStyle={{borderWidth: 0,
+        borderBottomColor: 'transparent'}}
+      />
     </View>
   );
 }
@@ -83,11 +124,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#9BF500',
   },
 
-  // imgProfile: {
-  //   width: 58,
-  //   height: 54,
-  //   /*borderRadius: 100 Aplicando em qualquer imagem*/
-  // },
+  imgProfile: {
+    width: 58,
+    height: 54,
+    borderRadius: 100 /*Aplicando em qualquer imagem*/
+  },
 
   imgMenu: {
     width: 50,
@@ -136,7 +177,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 26,
-    marginTop:-46
+    marginTop:-66
   },
 
   box1:{
@@ -177,5 +218,41 @@ const styles = StyleSheet.create({
 
   imgSeta: { 
     marginLeft: 30,
-  }
+  },
+
+  list: {
+    flex: 1,
+  },
+
+  textsTr:{
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexDirection:'row',
+    padding: 36,
+    marginTop: 16,
+  },
+
+  TitleTr: {
+    fontFamily: 'InterLight',
+    letterSpacing: -0.26,
+    fontSize: 13,
+    textAlign:'left',
+    flex:1
+  },
+
+  textView: {
+    fontFamily: 'InterLight',
+    flex:1,
+    letterSpacing: -0.26,
+    fontSize: 13,
+    color: '#75B700',
+    textAlign:'right'
+  },
+
+  FlList:{
+    marginStart: 14,
+    marginEnd: 14,
+    width:350,
+    marginTop: -10,
+  },
 });
