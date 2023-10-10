@@ -12,22 +12,30 @@ import { useFonts } from 'expo-font';
 
 const Login = () => {
 
-  useFonts({
-    Inter: require('../assets/fonts/Inter-Variable.ttf'),
-  });
+  const [fontsLoaded] = useFonts({
+    InterRegular:require('../../assets/Fonts/InterRegular.ttf'),
+    InterMedium:require('../../assets/Fonts/InterMedium.ttf'),
+    InterBold:require('../../assets/Fonts/InterBold.ttf'),
+    InterLight:require('../../assets/Fonts/InterLight.ttf'),
+    InterVariable:require('../../assets/Fonts/InterVariable.ttf'),
+    });
+
+   if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <View style={styles.container}>
       <Image
         style={{ height: 240, width: '100%' }}
-        source={require('../assets/images/shop.png')}
+        source={require('../../assets/Images/shop.png')}
       />
       <View style={styles.overlay} />
       <View style={styles.overlay2} />
       <View style={styles.loginArea}>
         <Text
           style={{
-            fontFamily: 'Inter',
+            fontFamily: 'InterVariable',
             textAlign: 'center',
             marginTop: 14,
             fontSize: 32,
@@ -38,7 +46,7 @@ const Login = () => {
         </Text>
         <Text
           style={{
-            fontFamily: 'Inter',
+            fontFamily: 'InterVariable',
             fontSize: 14,
             textAlign: 'center',
             color: '#2D5300',
@@ -62,7 +70,7 @@ const Login = () => {
         />
         <Text
           style={{
-            fontFamily: 'Inter',
+            fontFamily: 'InterVariable',
             marginTop: 13,
             color: '#2D5300',
             textAlign: 'center',
@@ -72,7 +80,7 @@ const Login = () => {
         <Button
           contentStyle={{ height: 50 }}
           labelStyle={{
-            fontFamily: 'Inter',
+            fontFamily: 'InterVariable',
             fontSize: 16,
             fontWeight: 400,
             letterSpacing: 0,
@@ -90,7 +98,7 @@ const Login = () => {
         </Button>
         <Button
           labelStyle={{
-            fontFamily: 'Inter',
+            fontFamily: 'InterVariable',
             fontSize: 14,
             fontWeight: 400,
             letterSpacing: 0,
@@ -158,7 +166,7 @@ const styles = StyleSheet.create({
     borderColor: 'lightgray',
     borderStyle: 'solid',
     borderWidth: 1,
-    fontFamily: 'Inter',
+    fontFamily: 'InterVariable',
     fontSize: 14,
   },
 });
