@@ -1,59 +1,48 @@
-import { View, StyleSheet, Image, SafeAreaView, TextInput } from 'react-native';
-import { Button, Text } from 'react-native-paper';
+import {
+  View,
+  ScrollView,
+  StyleSheet,
+  Text,
+  Image,
+  TextInput,
+} from 'react-native';
+import { Button } from 'react-native-paper';
+import { useState } from 'react';
 import { useFonts } from 'expo-font';
-import React, { useEffect, useState } from 'react';
-import Cadastro from '../Cadastro/Cadastro';
 
-const Login = ({ navigation }) => {
-  //useStates pra cuidar do login
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+const Login = () => {
 
-  //mexi nesse useFonts pra ver se aquela const era necessária, parece que não
-  //qualquer coisa só editar até a fonte dar certo, mas deve funcionar
-  /*useFonts({
-  
-    InterVariable: require('../assets/Fonts/InterVariable.ttf'),
-  });*/
-
-  const [fontsLoaded] = useFonts({
-    InterRegular:require('../../assets/Fonts/InterRegular.ttf'),
-    InterMedium:require('../../assets/Fonts/InterMedium.ttf'),
-    InterBold:require('../../assets/Fonts/InterBold.ttf'),
-    InterLight:require('../../assets/Fonts/InterLight.ttf'),
-    InterVariable: require('../../assets/Fonts/InterVariable.ttf')
-    });
-
-   if (!fontsLoaded) {
-    return null;
-  }
+  useFonts({
+    Inter: require('../assets/fonts/Inter-Variable.ttf'),
+  });
 
   return (
     <View style={styles.container}>
       <Image
-        style={{height: 240, width: '100%' }}
-        source={require('../../assets/Images/shop.png')}
+        style={{ height: 240, width: '100%' }}
+        source={require('../assets/images/shop.png')}
       />
       <View style={styles.overlay} />
       <View style={styles.overlay2} />
       <View style={styles.loginArea}>
         <Text
           style={{
-            fontFamily: 'InterVariable',
+            fontFamily: 'Inter',
             textAlign: 'center',
             marginTop: 14,
             fontSize: 32,
-            fontWeight: '650',
+            fontWeight: '600',
             color: '#2D5300',
           }}>
           Login
         </Text>
         <Text
           style={{
-            fontFamily: 'InterVariable',
-            fontSize: 12,
+            fontFamily: 'Inter',
+            fontSize: 14,
             textAlign: 'center',
             color: '#2D5300',
+            letterSpacing: 0,
           }}>
           Acesse sua conta e comece a economizar.
         </Text>
@@ -62,21 +51,18 @@ const Login = ({ navigation }) => {
           inputMode="email"
           placeholder="E-mail"
           placeholderTextColor="#878787"
-          value={email}
-          onChangeText={setEmail}
+          onChangeText={() => {}}
         />
         <TextInput
           style={styles.textInputBox}
           placeholder="Senha"
           secureTextEntry={true}
           placeholderTextColor="#878787"
-          value={password}
-          onChangeText={setPassword}
+          onChangeText={() => {}}
         />
-        {/*por enquanto o botão de restaurar senha é só texto inerte*/}
         <Text
           style={{
-            fontFamily: 'InterVariable',
+            fontFamily: 'Inter',
             marginTop: 13,
             color: '#2D5300',
             textAlign: 'center',
@@ -86,7 +72,7 @@ const Login = ({ navigation }) => {
         <Button
           contentStyle={{ height: 50 }}
           labelStyle={{
-            fontFamily: 'InterVariable',
+            fontFamily: 'Inter',
             fontSize: 16,
             fontWeight: 400,
             letterSpacing: 0,
@@ -104,8 +90,8 @@ const Login = ({ navigation }) => {
         </Button>
         <Button
           labelStyle={{
-            fontFamily: 'InterVariable',
-            fontSize: 11,
+            fontFamily: 'Inter',
+            fontSize: 14,
             fontWeight: 400,
             letterSpacing: 0,
           }}
@@ -117,7 +103,7 @@ const Login = ({ navigation }) => {
             borderRadius: 14,
           }}
           mode="contained"
-          onPress={() => navigation.navigate('Cadastro')}
+          onPress={() => {}}
           dark={true}>
           Não tenho conta
         </Button>
@@ -137,28 +123,30 @@ const styles = StyleSheet.create({
   },
   loginArea: {
     backgroundColor: 'white',
-    height: 384,
-    width: 280,
+    height: 390,
+    width: '80%',
     borderRadius: 20,
     top: '16%',
   },
   overlay: {
     width: '120%',
     height: '40%',
-    borderRadius: 50,
-    position: 'absolute',
     backgroundColor: '#9BF500',
-    top: '16%',
+    top: '17%',
     left: '-10%',
+    position: 'absolute',
+    borderTopEndRadius: 2000,
+    borderTopLeftRadius: 2000,
   },
   overlay2: {
     width: '120%',
-    height: '34%',
-    borderRadius: 50,
+    height: '40%',
     position: 'absolute',
     backgroundColor: '#3EAB3D',
-    top: '22%',
+    top: '23%',
     left: '-10%',
+    borderTopEndRadius: 2000,
+    borderTopLeftRadius: 2000,
   },
   textInputBox: {
     backgroundColor: '#F7F7F7',
@@ -170,7 +158,7 @@ const styles = StyleSheet.create({
     borderColor: 'lightgray',
     borderStyle: 'solid',
     borderWidth: 1,
-    fontFamily: 'InterVariable',
+    fontFamily: 'Inter',
     fontSize: 14,
   },
 });
