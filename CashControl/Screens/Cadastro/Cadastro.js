@@ -11,12 +11,22 @@ import { Button } from 'react-native-paper';
 import { useState } from 'react';
 import { useFonts } from 'expo-font';
 
-import Checkbox from 'expo-checkbox';
+
 
 const Cadastro = () => {
-  useFonts({
-    Inter: require('../assets/fonts/Inter-Variable.ttf'),
-  });
+  const [fontsLoaded] = useFonts({
+    InterRegular:require('../../assets/Fonts/InterRegular.ttf'),
+    InterMedium:require('../../assets/Fonts/InterMedium.ttf'),
+    InterBold:require('../../assets/Fonts/InterBold.ttf'),
+    InterLight:require('../../assets/Fonts/InterLight.ttf'),
+    InterVariable:require('../../assets/Fonts/InterVariable.ttf'),
+
+
+    });
+
+   if (!fontsLoaded) {
+    return null;
+  }
 
   const [isSelected, setSelection] = useState(false);
 
@@ -30,7 +40,7 @@ const Cadastro = () => {
           style={styles.returnButtonContainer}>
           <Image
             style={styles.returnButton}
-            source={require('../assets/images/return-button-1.png')}
+            source={require('../../assets/Images/return-button-1.png')}
           />
         </TouchableOpacity>
         <Text style={styles.headerText}>Realização de cadastro</Text>
