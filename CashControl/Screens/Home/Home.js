@@ -24,7 +24,7 @@ export default function Home() {
   /* Lógica Botão Menu*/
   const navigation = useNavigation();
     const abridrawer = () => {
-      navigation.openDrawer(); /* openDrawer = Abre nosso drawer*/
+      navigation.openDrawer(); /* função responsável por abrir nosso drawer*/
     };
   //
 
@@ -95,6 +95,7 @@ export default function Home() {
         </TouchableOpacity>
       </View>
 
+      {/* /*Lista de ultimas receitas*/}
       <FlatList
         style ={styles.FlList}
         data ={list}

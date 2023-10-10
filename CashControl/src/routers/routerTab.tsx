@@ -2,9 +2,10 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Ionicons, Octicons} from '@expo/vector-icons'
 
+/*Importação de telas*/
 import Home from '../../Screens/Home/Home';
 import Statistics from '../../Screens/Statistics/Statistics';
-import Notification from '../../Screens/Notification';
+import Notification from '../../Screens/Notifications/Notification';
 
 const Tab = createBottomTabNavigator();
 
