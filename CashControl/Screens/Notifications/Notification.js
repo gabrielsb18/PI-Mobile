@@ -1,10 +1,17 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import React from 'react';
+import Header from '../../src/components/Header/header';
 
 const Notification = () => {
   return (
     <View style = {styles.container}>
-      <Text>Notification</Text>
+      
+      {/* Importando meu componente header e passando como propriedade o seu titulo */}
+        <Header title = "Notificações"/>
+
+          <View style = {styles.Text}>
+            <Text>Notifications</Text>
+          </View>
     </View>
   )
 }
@@ -12,8 +19,12 @@ const Notification = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  Text: {
+    justifyContent: 'center',
+    flex:1
   }
 })
 

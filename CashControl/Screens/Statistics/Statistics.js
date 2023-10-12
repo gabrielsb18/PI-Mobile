@@ -2,6 +2,8 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import {useFonts} from 'expo-font';
 import React from 'react'
 import GoBack from '../../src/components/GoBack/goBack';
+import { StatusBar } from 'react-native';
+
 
 const Statistics = () => {
 
@@ -20,9 +22,8 @@ const Statistics = () => {
       
   return (
     <View style = {style.container}>
-
         <View style = {style.boxHeader}>
-            <GoBack/>
+        <GoBack/>
             <Text style ={{fontFamily: 'InterMedium', fontSize: 20, letterSpacing: -1., fontWeight: 500, alignItems: 'center', position: 'absolute', marginLeft: 90}}>Histórico</Text>
         </View>
 
@@ -30,7 +31,6 @@ const Statistics = () => {
             <Text style ={{fontFamily: 'InterLight', fontSize: 18, letterSpacing: -1}}>Gastos do mês</Text>
             <Text style ={{fontFamily: 'InterBold', fontSize: 32, letterSpacing: -1}}>R$ 840,90</Text>
         </View>
-
     </View>
   )
 }
@@ -38,14 +38,14 @@ const Statistics = () => {
 const style = StyleSheet.create ({
 
     container: {
-        justifyContent: 'space-between',
+        flex:1,
         alignItems: 'center',
     },
 
     textTitle: {
         justifyContent: 'row',
         alignItems: 'center',
-        padding: 30
+        padding: 20
     },
 
     boxHeader: {
@@ -53,10 +53,12 @@ const style = StyleSheet.create ({
         alignItems: 'center',
         flexDirection: 'row',
 
+
         backgroundColor: '#9BF500',
-        width: 450,
-        padding: 10,
-        marginTop:30
+        width: '100%',
+        height: '10%',
+        padding: 20,
+        marginTop: 30
     }
 })
 
