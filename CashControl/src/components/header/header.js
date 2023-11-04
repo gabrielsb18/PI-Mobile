@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import GoBack from '../GoBack/goBack'
 
-const header = ({title}) => {
+const Header = ({title}) => {
   return (
     <View style = {style.boxHeader}>
     {/* /*botão de retornar*/}
@@ -39,4 +39,4 @@ const style = StyleSheet.create({
   }
 })
 
-export default header;
+export default Header;
