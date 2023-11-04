@@ -4,16 +4,11 @@ import { useFonts } from 'expo-font';
 import {LinearGradient} from 'expo-linear-gradient'; {/* lib gradiente do header*/}
 import Button_Desp_e_Rec from '../../src/components/ButtonDesp/Button.js';
 import { FlatList } from 'react-native-gesture-handler';
-import Movements from '../../src/components/Movements/Movements.js';
 import { useState } from 'react';
 
 import { Footer } from '../../src/Utils/style.ts';
 import { transactions } from '../../src/Utils/Transactions.js';
 import {ContentFlat,
-    ContentFloatHeader,
-    ButtonVerTodos,
-    ButtonTitleVerTodos,
-    Title,
     IconTransaction,
     DetailsTransaction,
     NameTransaction,
@@ -86,9 +81,17 @@ export default function Home() {
             source = {require('../../assets/Images/Arrow1.png')} style = {{marginLeft: 10}}/>
           </View>      
         </View>
+        
         <Button_Desp_e_Rec/>
+        
+        <View style = {styles.textsTr}>
+            <Text style = {styles.TitleTr}>Últimas transações</Text>
+            <TouchableOpacity>
+                <Text style = {styles.textView}>View All</Text>
+            </TouchableOpacity>
+        </View>
 
-      {/* /*Lista de ultimas transações*/}
+      {/*Lista de ultimas transações*/}
       <Footer>
         <FlatList
             data={transactions}
@@ -102,14 +105,6 @@ export default function Home() {
                             <AmountTransaction style={item.type === 1 ? styles.value : styles.expenses}>{item.type === 1 ? `R$ ${item.value}` : `R$ ${item.Amount}`}</AmountTransaction>
                     </ContentFlat>
             )}
-            ListHeaderComponent={
-            <ContentFloatHeader>
-                <Title>Ultimas Transações</Title>
-                    <ButtonVerTodos>
-                        <ButtonTitleVerTodos>View All</ButtonTitleVerTodos>
-                    </ButtonVerTodos>
-            </ContentFloatHeader>
-            }
             overScrollMode="never" /*Desativa o efeito de limite de rolagem */
             scrollEnabled={true} /*Desativa o scrool da minha lista  */
             />
@@ -238,16 +233,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection:'row',
-    padding: 36,
-    marginTop: 16,
+    paddingHorizontal: 45,
+    paddingBottom:12,
+    paddingTop: 12
   },
 
-  TitleTr: {
+   TitleTr: {
     fontFamily: 'InterLight',
     letterSpacing: -0.26,
     fontSize: 13,
-    textAlign:'left',
-    flex:1
+    flex:1,
   },
 
   textView: {
@@ -256,8 +251,7 @@ const styles = StyleSheet.create({
     letterSpacing: -0.26,
     fontSize: 13,
     color: '#75B700',
-    textAlign:'right'
-  },
+   },
 
   FlList:{
     marginStart: 14,
