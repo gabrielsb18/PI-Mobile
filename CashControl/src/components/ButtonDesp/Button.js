@@ -1,7 +1,9 @@
 import { StyleSheet, Text, View, Image,TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
+import ListagemDespEResp from '../../../Screens/ListagemDespEResp/ListagemDespEResp';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Button_Desp_e_Rec ({onPress}) {
+export default function Button_Desp_e_Rec () {
 
     const [fontsLoaded] = useFonts({
     InterMedium:require('../../../assets/Fonts/InterMedium.ttf'),
@@ -11,9 +13,11 @@ export default function Button_Desp_e_Rec ({onPress}) {
         return null;
     }
     
+    const navigation = useNavigation()
+
     return (
         <View style={styles.viewreceitas}>
-            <TouchableOpacity onPress={onPress}>
+            <TouchableOpacity onPress= {() => navigation.navigate('ListagemDespesasEReceitas') }>
                 <View style={styles.receitas}>
                     <Text style = {{fontSize: 20, alignItems:'center',fontFamily: 'InterMedium'}}>Despesas e Receitas</Text>
                     <Image
