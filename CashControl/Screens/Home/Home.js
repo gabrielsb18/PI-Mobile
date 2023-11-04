@@ -7,17 +7,19 @@ import { FlatList } from 'react-native-gesture-handler';
 import Movements from '../../src/components/Movements/Movements.js';
 import { useState } from 'react';
 
-
- const list = [{
-   id: 1,
-   label: 'Alimentação',
-   value: '800,00',
-   date: '10/01/23',
-   type: 0, //1 para receita e 0 para despesa
-   description: 'Compra do Mês'
-  }]
-
-  
+import { Footer } from '../../src/Utils/style.ts';
+import { transactions } from '../../src/Utils/Transactions.js';
+import {ContentFlat,
+    ContentFloatHeader,
+    ButtonVerTodos,
+    ButtonTitleVerTodos,
+    Title,
+    IconTransaction,
+    DetailsTransaction,
+    NameTransaction,
+    SubtitleTransaction,
+    AmountTransaction} from '../../src/Utils/style.ts';
+    
 export default function Home() {
   const [showValue, setShowValue] = useState (false)
   
@@ -26,7 +28,6 @@ export default function Home() {
     const abridrawer = () => {
       navigation.openDrawer(); /* função responsável por abrir nosso drawer*/
     };
-  //
 
   const [fontsLoaded] = useFonts({
     InterRegular:require('../../assets/Fonts/InterRegular.ttf'),
@@ -85,26 +86,34 @@ export default function Home() {
             source = {require('../../assets/Images/Arrow1.png')} style = {{marginLeft: 10}}/>
           </View>      
         </View>
-
         <Button_Desp_e_Rec/>
 
-      <View style = {styles.textsTr}>
-        <Text style = {styles.TitleTr}>Últimas transações</Text>
-        <TouchableOpacity>
-          <Text style = {styles.textView}>View All</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* /*Lista de ultimas receitas*/}
-      <FlatList
-        style ={styles.FlList}
-        data ={list}
-        keyExtractor = {(item) => String(item.id)} /* Passando valor para String*/
-        showsVerticalScrollIndicator = {false} /*barra de scrool vertical*/
-        renderItem ={({item}) => <Movements data={item}/>}
-        contentContainerStyle={{borderWidth: 0,
-        borderBottomColor: 'transparent'}}
-      />
+      {/* /*Lista de ultimas transações*/}
+      <Footer>
+        <FlatList
+            data={transactions}
+            renderItem={({ item }) =>(
+                    <ContentFlat>
+                            <IconTransaction source = {item.Icon}/>
+                            <DetailsTransaction>
+                                <NameTransaction>{item.title}</NameTransaction>
+                                <SubtitleTransaction>{item.subtitle}</SubtitleTransaction>
+                            </DetailsTransaction>
+                            <AmountTransaction style={item.type === 1 ? styles.value : styles.expenses}>{item.type === 1 ? `R$ ${item.value}` : `R$ ${item.Amount}`}</AmountTransaction>
+                    </ContentFlat>
+            )}
+            ListHeaderComponent={
+            <ContentFloatHeader>
+                <Title>Ultimas Transações</Title>
+                    <ButtonVerTodos>
+                        <ButtonTitleVerTodos>View All</ButtonTitleVerTodos>
+                    </ButtonVerTodos>
+            </ContentFloatHeader>
+            }
+            overScrollMode="never" /*Desativa o efeito de limite de rolagem */
+            scrollEnabled={true} /*Desativa o scrool da minha lista  */
+            />
+      </Footer>
     </View>
   );
 }
@@ -256,4 +265,8 @@ const styles = StyleSheet.create({
     width:350,
     marginTop: -10,
   },
+
+  expenses:{
+    color:'red'
+  }
 });
