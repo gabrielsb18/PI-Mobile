@@ -1,9 +1,11 @@
 import { StyleSheet, Text, View, Image,TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
-import ListagemDespEResp from '../../../Screens/ListagemDespEResp/ListagemDespEResp';
 import { useNavigation } from '@react-navigation/native';
+import ListagemDespEResp from '../../../Screens/ListagemDespEResp/ListagemDespEResp';
 
 export default function Button_Desp_e_Rec () {
+
+    const navigation = useNavigation()
 
     const [fontsLoaded] = useFonts({
     InterMedium:require('../../../assets/Fonts/InterMedium.ttf'),
@@ -12,12 +14,10 @@ export default function Button_Desp_e_Rec () {
     if (!fontsLoaded) {
         return null;
     }
-    
-    const navigation = useNavigation()
 
     return (
         <View style={styles.viewreceitas}>
-            <TouchableOpacity onPress= {() => navigation.navigate('ListagemDespesasEReceitas') }>
+            <TouchableOpacity onPress= {() => navigation.navigate('ListagemDespEResp') }>
                 <View style={styles.receitas}>
                     <Text style = {{fontSize: 20, alignItems:'center',fontFamily: 'InterMedium'}}>Despesas e Receitas</Text>
                     <Image
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     
     viewreceitas:{
         width: '84%',
-        height: '12%',
+        height: '16%',
         marginTop: -20 /*margin do topo*/
     },
 
