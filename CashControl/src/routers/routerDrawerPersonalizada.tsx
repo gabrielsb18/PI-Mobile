@@ -1,5 +1,5 @@
 import { DrawerContentScrollView, createDrawerNavigator } from '@react-navigation/drawer';
-import {Text, StyleSheet, TouchableOpacity, View, Image} from 'react-native';
+import {Text, StyleSheet, View, Image} from 'react-native';
 import { Octicons,  MaterialIcons } from '@expo/vector-icons'
 import { useFonts } from 'expo-font';
 
@@ -8,6 +8,7 @@ import StackRoutes from './routerStackNav';
 
 import ButtonDrawerHome from '../components/ButtonDrawerHome/ButtonDrawerHome';
 import ButtonDrawerSair from '../components/ButtonDrawerSair/ButtonDrawerSair';
+import StackRoutesTR from './routerStackTr';
 
 
 const Drawer = createDrawerNavigator();
@@ -51,7 +52,6 @@ export default function routerDrawer2() {
               fontSize: 18,
             },
         }}/>
-
       {/* atalho para a pilha com o tabNavigation */}
       <Drawer.Screen
         name ='Feed'
@@ -65,7 +65,6 @@ export default function routerDrawer2() {
             fontSize: 18,
             }
         }}/>
-
     </Drawer.Navigator>
   )
 }
@@ -90,8 +89,6 @@ const MenuItems = ({navigation}) => {
       <ButtonDrawerSair
         text = "Sair"
         onPress ={() => navigation.navigate('Profile')}/>
-
-      <TouchableOpacity></TouchableOpacity>
     </DrawerContentScrollView>
   )
 }
