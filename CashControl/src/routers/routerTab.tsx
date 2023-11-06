@@ -3,9 +3,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Ionicons, Octicons} from '@expo/vector-icons'
 
 /*Importação de telas*/
-import Home from '../../Screens/Home/Home';
 import Statistics from '../../Screens/Statistics/Statistics';
 import Notification from '../../Screens/Notifications/Notification';
+import StackRoutesTR from './routerStackTr';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +21,7 @@ export default function RouterTab() {
         }}>
 
         <Tab.Screen name = "Home"
-          component = {Home}
+          component = {StackRoutesTR}
           options={{
             headerShown: false, /*propriedade responsável pelo header*/
             tabBarIcon: ({color, size}) => <Octicons name = "home" color={color} size={30}/>,
@@ -43,7 +43,6 @@ export default function RouterTab() {
             tabBarIcon: ({ color, size}) => <Ionicons name="notifications-outline" size={30} color= {color}/>,
             tabBarLabel: "•"
           }}/>
-
     </Tab.Navigator>
   )
 }

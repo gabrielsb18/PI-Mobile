@@ -60,12 +60,10 @@ export default function Home() {
         <View style ={styles.saldoTotal}>
           <Text style ={{letterSpacing: -0.3, fontSize: 15, fontFamily: 'InterLight'}}>Seu saldo total</Text>
           <Text style ={{fontSize: 32, marginTop: 16, fontFamily: 'InterBold' }}>R$ 5.000,00</Text>
-          
           <TouchableOpacity>
           <Image
           source = {require('../../assets/Images/Eye_Saldo.png')} style = {styles.imgEye}/>
           </TouchableOpacity>
-
         </View>
       
       </View>
@@ -94,6 +92,7 @@ export default function Home() {
       {/*Lista de ultimas transações*/}
       <Footer>
         <FlatList
+            //ADICIONAR FUNÇÃO PARA EXIBIR SOMENTE OS 3 PRIMEIROS ITENS
             data={transactions}
             renderItem={({ item }) =>(
                     <ContentFlat>
@@ -158,6 +157,7 @@ const styles = StyleSheet.create({
   },
   
   saldoTotal: {
+
     backgroundColor: '#75B700',
     fontSize: 15,
     width: '80%',

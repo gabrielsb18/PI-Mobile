@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View, Image,TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native';
-import ListagemDespEResp from '../../../Screens/ListagemDespEResp/ListagemDespEResp';
 
 export default function Button_Desp_e_Rec () {
 
@@ -46,8 +45,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 20,
     },
-
-    imgSeta: { 
-        marginLeft: 30,
-    },
+    
+    imgSeta: {
+        marginLeft: 20
+    }
 });

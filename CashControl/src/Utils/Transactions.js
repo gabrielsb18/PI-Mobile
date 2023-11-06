@@ -7,7 +7,7 @@ export const transactions = [
         id: '1',
         title: 'Alimentação',
         subtitle: 'Compra do Mês',
-        Amount: '900,00',
+        Amount: '800,00',
         type: 0, //1 para receita e 0 para despesa
         Icon: IconAlimento
     },
