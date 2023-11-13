@@ -25,7 +25,7 @@ export default function StackRoutesTR() {
         component={ListagemDespEResp}
         options={{
           gestureEnabled: false,
-          headerShown: true,
+          headerShown: false,
           headerTitleAlign: "center",
           title: "Categoria",
           headerStyle: {
@@ -43,7 +43,7 @@ export default function StackRoutesTR() {
         name="NovaReceita"
         component={NovaReceita}
         options={{
-          headerShown: true,
+          headerShown: false,
           headerTitleAlign: "center",
           title: "Nova Receita",
           headerStyle: {
