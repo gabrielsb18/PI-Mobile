@@ -5,7 +5,6 @@ import {LinearGradient} from 'expo-linear-gradient'; {/* lib gradiente do header
 import Button_Desp_e_Rec from '../../src/components/ButtonDesp/Button.js';
 import { FlatList } from 'react-native-gesture-handler';
 import { useState } from 'react';
-
 import { Footer } from '../../src/Utils/style.ts';
 import { transactions } from '../../src/Utils/Transactions.js';
 import {ContentFlat,
