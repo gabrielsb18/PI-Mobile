@@ -12,7 +12,7 @@ import {ContentFlat,
     DetailsTransaction,
     NameTransaction,
     SubtitleTransaction,
-    AmountTransaction} from '../../src/Utils/style.ts';
+    AmountTransaction,} from '../../src/Utils/style.ts';
     
 export default function Home() {
   const [showValue, setShowValue] = useState (false)
@@ -92,7 +92,7 @@ export default function Home() {
       <Footer>
         <FlatList
             //ADICIONAR FUNÇÃO PARA EXIBIR SOMENTE OS 3 PRIMEIROS ITENS
-            data={transactions}
+            data={transactions.slice(0, 3)}
             renderItem={({ item }) =>(
                     <ContentFlat>
                             <IconTransaction source = {item.Icon}/>

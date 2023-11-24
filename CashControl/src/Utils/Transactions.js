@@ -21,4 +21,58 @@ export const transactions = [
         Icon: IconVariedade
     },
 
+    {
+        id: '3',
+        title: 'Assinatura',
+        subtitle: 'HBO Max',
+        Amount: '34,90',
+        type: 0,
+        Icon: IconVariedade
+    },
+
+    {
+        id: '4',
+        title: 'Assinatura',
+        subtitle: 'HBO Max',
+        Amount: '34,90',
+        type: 0,
+        Icon: IconVariedade
+    },
+
+    {
+        id: '5',
+        title: 'Assinatura',
+        subtitle: 'HBO Max',
+        Amount: '34,90',
+        type: 0,
+        Icon: IconVariedade
+    },
+
+    {
+        id: '6',
+        title: 'Assinatura',
+        subtitle: 'HBO Max',
+        Amount: '34,90',
+        type: 0,
+        Icon: IconVariedade
+    },
+
+    {
+        id: '7',
+        title: 'Assinatura',
+        subtitle: 'HBO Max',
+        Amount: '34,90',
+        type: 0,
+        Icon: IconVariedade
+    },
+
+    {
+        id: '8',
+        title: 'Assinatura',
+        subtitle: 'HBO Max',
+        Amount: '34,90',
+        type: 0,
+        Icon: IconVariedade
+    },
+
 ]

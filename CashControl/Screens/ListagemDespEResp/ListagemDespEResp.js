@@ -30,7 +30,7 @@ const ListagemDespEResp = () => {
           tabBarInactiveTintColor: "#000",
           lazy: true,
           tabBarIndicatorStyle: {
-            backgroundColor: "#000",
+            backgroundColor: "#338F25",
             borderRadius: 10,
             height: 3,
           },
