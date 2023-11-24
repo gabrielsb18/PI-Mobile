@@ -18,7 +18,7 @@ import * as yup from 'yup'
 
 //Validação do formulario
 const schema = yup.object({
-  nomeReceita: yup.string().required("Escolha sua receita"),
+  nomeReceita: yup.string().required("Selecione o tipo da sua receita"),
   valorReceita: yup.string().required("Digite o valor da sua receita"),
   Descricao: yup.string().required("Digite sua descrição"),
   Date: yup.string().required("Digite a data para lembrete"),
@@ -189,14 +189,13 @@ const NovaReceita = () => {
                 onChange={(d) => onChange(d)}
                 value={value}
                 inputMode="start"
-                style={{ height: 45 }}
+                style={{ height: 45, marginBottom: 10}}
                 mode="outlined"
                 activeOutlineColor="#75B700"
                 presentationStyle="overFullScreen"
                 transparent={false} />
-                {/* {errors.Date && <Text style = {style.labelError}>{errors.Date?.message}</Text>} */}
+                {errors.Date && <Text style = {style.labelError}>{errors.Date?.message}</Text>}
             </View>
- 
             </SafeAreaProvider>
           )}/>
         <View
@@ -208,7 +207,7 @@ const NovaReceita = () => {
             borderWidth: 0,
             borderRadius: 10,
 
-            marginTop: 65,
+            marginTop: 75,
             padding: 10,
 
             backgroundColor: "white",
@@ -248,7 +247,7 @@ const style = StyleSheet.create({
   },
 
   inputDate: {
-    height: 45,
+    height: 75,
     marginBottom: 10
   },
 
@@ -276,7 +275,7 @@ const style = StyleSheet.create({
   labelError: {
     alignSelf: 'flex-start',
     color: 'red',
-    marginBottom: 8
+    marginBottom: 10
   }
   
 });
