@@ -1,25 +1,57 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image,  } from "react-native";
 import { useFonts } from "expo-font";
 import React from "react";
 import GoBack from "../../src/components/GoBack/goBack";
 import { Searchbar } from 'react-native-paper';
-
 import {ContentFlat,
   IconTransaction,
   DetailsTransaction,
   NameTransaction,
   SubtitleTransaction,
   AmountTransaction} from '../../src/Utils/style.ts';
-
+import { useState, useEffect } from "react";
 import { FlatList } from 'react-native-gesture-handler';
 import { Footer } from '../../src/Utils/style.ts';
 import { transactions } from '../../src/Utils/Transactions.js';
+import { somarValores } from "../../src/Utils/Transactions.js";
 
 const Statistics = () => {
+  
+  const [totalGastos, setTotalGastos] = useState(0);
+
+  //Total Gastos do Mês
+  useEffect(() => {
+    //Sempre que esta lista de trasnsações mudar, irá chamar essa função
+    const total = somarValores(transactions);
+    setTotalGastos(total);
+  },[transactions])
 
   //SearcBar
-  const [searchQuery, setSearchQuery] = React.useState('');
-  const onChangeSearch = query => setSearchQuery(query);
+  const [list, setList] = useState(transactions);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  //Implementação da busca da minha lista
+  useEffect(() => {
+    if(searchQuery ==='') {
+      setList(transactions);
+    } else {
+      setList (
+        transactions.filter(item => (item.title.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1 ||
+        item.Amount.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1)
+          //CODIGO REFATORADO!  
+
+          // if (item.title.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1) {
+          //   return true;
+          // } else {              
+          //   return false
+          // })
+      ));
+    }
+  },[searchQuery])
+
+  function setSearch(s) {
+    return transactions.filter((d) => d.title.includes(s));
+   }
 
   const [fontsLoaded] = useFonts({
     InterRegular: require("../../assets/Fonts/InterRegular.ttf"),
@@ -55,12 +87,12 @@ const Statistics = () => {
         <Text
           style={{ fontFamily: "InterLight", fontSize: 18, letterSpacing: -1 }}
         >
-          Gastos do mês
+          Gastos do Mês
         </Text>
         <Text
           style={{ fontFamily: "InterBold", fontSize: 32, letterSpacing: -1 }}
         >
-          R$ 840,90
+          R$ {totalGastos}
         </Text>
       </View>
       <View>
@@ -81,7 +113,7 @@ const Statistics = () => {
       >
         <Searchbar
           placeholder="Search"
-          onChangeText={onChangeSearch}
+          onChangeText={(s) => setSearchQuery(s)}
           value={searchQuery}
           style={{
             backgroundColor: "lightgray",
@@ -93,7 +125,7 @@ const Statistics = () => {
         <Footer>
           <FlatList
             //ADICIONAR FUNÇÃO PARA EXIBIR SOMENTE OS 3 PRIMEIROS ITENS
-            data={transactions}
+            data={list}
             renderItem={({ item }) => (
               <ContentFlat>
                 <IconTransaction source={item.Icon} />
