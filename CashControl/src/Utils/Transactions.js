@@ -20,59 +20,18 @@ export const transactions = [
         type: 0,
         Icon: IconVariedade
     },
-
-    {
-        id: '3',
-        title: 'Assinatura',
-        subtitle: 'HBO Max',
-        Amount: '34,90',
-        type: 0,
-        Icon: IconVariedade
-    },
-
-    {
-        id: '4',
-        title: 'Assinatura',
-        subtitle: 'HBO Max',
-        Amount: '34,90',
-        type: 0,
-        Icon: IconVariedade
-    },
-
-    {
-        id: '5',
-        title: 'Assinatura',
-        subtitle: 'HBO Max',
-        Amount: '34,90',
-        type: 0,
-        Icon: IconVariedade
-    },
-
-    {
-        id: '6',
-        title: 'Assinatura',
-        subtitle: 'HBO Max',
-        Amount: '34,90',
-        type: 0,
-        Icon: IconVariedade
-    },
-
-    {
-        id: '7',
-        title: 'Assinatura',
-        subtitle: 'HBO Max',
-        Amount: '34,90',
-        type: 0,
-        Icon: IconVariedade
-    },
-
-    {
-        id: '8',
-        title: 'Assinatura',
-        subtitle: 'HBO Max',
-        Amount: '34,90',
-        type: 0,
-        Icon: IconVariedade
-    },
-
 ]
+
+//Função responsável por somar os valores da lista
+export const somarValores = (transactions) => {
+    if (!transactions || transactions.length === 0) {
+      return '0.00';
+    }
+  
+    const total = transactions.reduce((acc, transaction) => {
+      const valorNumerico = parseFloat(transaction.Amount.replace(',', '.')) || 0;
+      return acc + valorNumerico;
+    }, 0);
+  
+    return total.toFixed(2);
+  };
