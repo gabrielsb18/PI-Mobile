@@ -38,8 +38,9 @@ const Statistics = () => {
       setList (
         transactions.filter(item => (item.title.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1 ||
         item.Amount.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1)
-          //CODIGO REFATORADO!  
+          //toLowerCase = responsável por buscar os carateres tanto em maiusculo ou minusculo
 
+          //CODIGO REFATORADO!  
           // if (item.title.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1) {
           //   return true;
           // } else {              
