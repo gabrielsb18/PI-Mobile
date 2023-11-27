@@ -12,6 +12,7 @@
     "@formatjs/intl-datetimeformat": "^6.11.3",
     "@hookform/resolvers": "^3.3.2",
     "@react-native-community/datetimepicker": "^7.2.0",
+    "@react-native-picker/picker": "^2.5.1",
     "@react-navigation/bottom-tabs": "^6.5.9",
     "@react-navigation/drawer": "^6.6.4",
     "@react-navigation/material-top-tabs": "^6.6.5",
