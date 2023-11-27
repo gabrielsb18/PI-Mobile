@@ -1,4 +1,5 @@
-import { View, Text, StyleSheet, Image,  } from "react-native";
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity} from "react-native";
+import {Picker} from '@react-native-picker/picker';
 import { useFonts } from "expo-font";
 import React from "react";
 import GoBack from "../../src/components/GoBack/goBack";
@@ -14,8 +15,28 @@ import { FlatList } from 'react-native-gesture-handler';
 import { Footer } from '../../src/Utils/style.ts';
 import { transactions } from '../../src/Utils/Transactions.js';
 import { somarValores } from "../../src/Utils/Transactions.js";
+import Header from "../../src/components/Header/Header";
 
 const Statistics = () => {
+
+  const mesesDoAno = [
+    'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'
+  ];
+
+  const [selectedMonth, setSelectedMonth] = useState(mesesDoAno[0]);
+
+  const renderMonths = () => {
+    return mesesDoAno.map((month, index) => (
+      <TouchableOpacity
+        key={index}
+        style={style.monthButton}
+        onPress={() => setSelectedMonth(month)}
+      >
+        <Text style={style.monthButtonText}>{month}</Text>
+      </TouchableOpacity>
+    ));
+  };
+
   
   const [totalGastos, setTotalGastos] = useState(0);
 
@@ -67,23 +88,7 @@ const Statistics = () => {
 
   return (
     <View style={style.container}>
-      <View style={style.boxHeader}>
-        <GoBack />
-        <Text
-          style={{
-            fontFamily: "InterMedium",
-            fontSize: 20,
-            letterSpacing: -1,
-            fontWeight: 500,
-            alignItems: "center",
-            position: "absolute",
-            marginLeft: 90,
-          }}
-        >
-          Histórico
-        </Text>
-      </View>
-
+      <Header title="Histórico"/>
       <View style={style.textTitle}>
         <Text
           style={{ fontFamily: "InterLight", fontSize: 18, letterSpacing: -1 }}
@@ -101,15 +106,28 @@ const Statistics = () => {
           source={require("../../assets/Images/Grafico.png")}
           style={style.imgGraph}
         />
-      </View>
+      </View> 
+      <View style={style.container2}>
+      <ScrollView
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        style={style.scrollView}
+      >
+        {renderMonths()}
+      </ScrollView>
+      {/* Renderizar a lista de transações filtradas */}
+      {/* Exemplo: <TransactionList transactions={filteredTransactions} /> */}
+    </View>
       <View
         style={{
           width: 385,
           height: 85,
           padding: 15,
-          marginTop: 12,
           justifyContent: "center",
           alignItems: "center",
+          //backgroundColor: 'red',
+         // marginTop: -120
         }}
       >
         <Searchbar
@@ -125,7 +143,6 @@ const Statistics = () => {
       </View>
         <Footer>
           <FlatList
-            //ADICIONAR FUNÇÃO PARA EXIBIR SOMENTE OS 3 PRIMEIROS ITENS
             data={list}
             renderItem={({ item }) => (
               <ContentFlat>
@@ -162,17 +179,17 @@ const style = StyleSheet.create({
     padding: 20,
   },
 
-  boxHeader: {
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
+  // boxHeader: {
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  //   flexDirection: "row",
 
-    backgroundColor: "#9BF500",
-    width: "100%",
-    height: "10%",
-    padding: 20,
-    marginTop: 30,
-  },
+  //   backgroundColor: "#9BF500",
+  //   width: "100%",
+  //   height: "10%",
+  //   padding: 20,
+  //   marginTop: 30,
+  // },
 
   imgGraph: {
     alignItems: "center",
@@ -183,6 +200,31 @@ const style = StyleSheet.create({
 
   expenses:{
     color:'red'
+  },
+
+  container2: {
+    height: 50,
+    width: 316,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  scrollView: {
+    height: 50,
+    width: 340,
+    marginTop: 20,
+    //backgroundColor: 'red'
+  },
+  monthButton: {
+    //backgroundColor: 'red',
+    paddingLeft: 10,
+    paddingRight: 10,
+    marginLeft: 5,
+    height: 24
+  },
+  monthButtonText: {
+    fontFamily: 'InterBold',
+    fontSize: 18,
+    fontWeight: 'bold',
   }
 });
 

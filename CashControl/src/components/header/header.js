@@ -9,16 +9,18 @@ const Header = ({title}) => {
 
   return (
     <View style = {style.boxHeader}>
-    {/* /*botão de retornar*/}
-    <TouchableOpacity onPress={()=> navigation.goBack()}> 
-        <View style = {style.picArrow}>
-            <View>
-                <Image
-                source = {require('../../../assets/Images/Arrow6.png')} style ={style.imgBack}/>
-            </View>
-        </View>
-    </TouchableOpacity>
-        <Text style = {style.headerText}>{title}</Text>
+      <View style={style.container}>
+      {/* /*botão de retornar*/}
+      <TouchableOpacity onPress={()=> navigation.goBack()}> 
+          <View style = {style.picArrow}>
+              <View>
+                  <Image
+                  source = {require('../../../assets/Images/Arrow6.png')} style ={style.imgBack}/>
+              </View>
+          </View>
+      </TouchableOpacity>
+          <Text style = {style.headerText}>{title}</Text>
+      </View>
     </View>
   )
 }
@@ -30,13 +32,20 @@ const style = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
 
-
     backgroundColor: '#9BF500',
     width: '100%',
-    
-    height: '10%',
+    position: 'top',
+    height: 95,
     padding: 20,
-    marginTop: 30,
+  },
+
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    //backgroundColor: 'red',
+
+    marginTop: 25
   },
 
   headerText: {
