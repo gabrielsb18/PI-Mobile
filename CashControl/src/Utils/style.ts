@@ -10,11 +10,14 @@ const fonts = {
 export const Footer = styled.View`
     flex: 1;
     width: 100%;
+    /* margin-top: 1px; */
 `;
 
 export const ContentFlat = styled.View`
     padding: 15px 45px;
     flex-direction: row;
+    /* border-width: 1px;
+    border-color: #D7D5D4; */
 `;
 
 export const IconTransaction = styled.Image `

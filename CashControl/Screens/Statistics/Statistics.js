@@ -19,6 +19,7 @@ import Header from "../../src/components/Header/Header";
 
 const Statistics = () => {
 
+  //Carrossel dos meses
   const mesesDoAno = [
     'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'
   ];
@@ -37,6 +38,17 @@ const Statistics = () => {
     ));
   };
 
+  
+  const filterTransactionsByMonth = () => {
+    if (selectedMonth === null) {
+      // Retorna a lista completa se nenhum mês estiver selecionado
+      return transactions;
+    }
+  
+    // Retorna a lista filtrada apenas se um mês estiver selecionado
+    return transactions.filter(item => item.month.startsWith(selectedMonth));
+  };
+  
   
   const [totalGastos, setTotalGastos] = useState(0);
 
@@ -59,14 +71,6 @@ const Statistics = () => {
       setList (
         transactions.filter(item => (item.title.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1 ||
         item.Amount.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1)
-          //toLowerCase = responsável por buscar os carateres tanto em maiusculo ou minusculo
-
-          //CODIGO REFATORADO!  
-          // if (item.title.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1) {
-          //   return true;
-          // } else {              
-          //   return false
-          // })
       ));
     }
   },[searchQuery])
@@ -116,8 +120,6 @@ const Statistics = () => {
       >
         {renderMonths()}
       </ScrollView>
-      {/* Renderizar a lista de transações filtradas */}
-      {/* Exemplo: <TransactionList transactions={filteredTransactions} /> */}
     </View>
       <View
         style={{
@@ -141,6 +143,9 @@ const Statistics = () => {
           }}
         />
       </View>
+      <View style = {style.textsTr}>
+        <Text style = {style.TitleTr}>Transações</Text>
+      </View>
         <Footer>
           <FlatList
             data={list}
@@ -160,6 +165,7 @@ const Statistics = () => {
             )}
             overScrollMode="never" /*Desativa o efeito de limite de rolagem */
             scrollEnabled={true} /*Desativa o scrool da minha lista  */
+            keyExtractor={(item, index) => index.toString()}
           />
         </Footer>
     </View>
@@ -177,19 +183,8 @@ const style = StyleSheet.create({
     justifyContent: "row",
     alignItems: "center",
     padding: 20,
+    marginTop: 22,
   },
-
-  // boxHeader: {
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   flexDirection: "row",
-
-  //   backgroundColor: "#9BF500",
-  //   width: "100%",
-  //   height: "10%",
-  //   padding: 20,
-  //   marginTop: 30,
-  // },
 
   imgGraph: {
     alignItems: "center",
@@ -208,12 +203,14 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   scrollView: {
     height: 50,
     width: 340,
     marginTop: 20,
     //backgroundColor: 'red'
   },
+
   monthButton: {
     //backgroundColor: 'red',
     paddingLeft: 10,
@@ -221,11 +218,28 @@ const style = StyleSheet.create({
     marginLeft: 5,
     height: 24
   },
+
   monthButtonText: {
     fontFamily: 'InterBold',
     fontSize: 18,
     fontWeight: 'bold',
-  }
+  },
+
+  textsTr:{
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexDirection:'row',
+    paddingHorizontal: 45,
+    paddingBottom:12,
+    paddingTop: 12
+  },
+
+  TitleTr: {
+    fontFamily: 'InterLight',
+    letterSpacing: -0.26,
+    fontSize: 13,
+    flex:1,
+  },
 });
 
 export default Statistics;

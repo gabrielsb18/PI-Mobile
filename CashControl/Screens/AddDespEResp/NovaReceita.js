@@ -1,13 +1,10 @@
-import { View, Text, StyleSheet, TouchableOpacity, KeyboardAvoidingView  } from "react-native";
-import React, { useState } from "react";
+import { View, Text, StyleSheet, TouchableOpacity} from "react-native";
+import React, { useState, useContext } from "react";
 import { TextInput } from "react-native-paper";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { DatePickerInput } from "react-native-paper-dates";
 import {SelectList} from 'react-native-dropdown-select-list';
 import { useFonts } from 'expo-font';
 import { Checkbox } from 'react-native-paper';
 import { useNavigation } from "@react-navigation/native";
-import Receitas from "../Transactions/Receitas";
 import Header from "../../src/components/Header/Header";
 import { enGB, registerTranslation } from 'react-native-paper-dates'
 registerTranslation('en-GB', enGB)
@@ -16,6 +13,9 @@ import { TextInputMask } from 'react-native-masked-text';
 import {useForm, Controller} from 'react-hook-form'
 import {yupResolver} from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+
+import { TransacaoContext } from '../../src/Contexts/TransacoesContext';
+import { transactions } from "../../src/Utils/Transactions";
 
 //Validação do formulario
 const schema = yup.object({
@@ -31,8 +31,9 @@ const NovaReceita = () => {
     resolver:yupResolver(schema)
   })
 
-  function handleSignIn(data){
-    console.log(data)
+  function handleSignIn(adicionar){
+    console.log(adicionar)
+    navigation.goBack();
   }
 
   const navigation = useNavigation();
@@ -45,6 +46,18 @@ const NovaReceita = () => {
   const [date, setDate] = useState("");
   // const [descricao, setDescricao] = useState("");
   // const [valor, setValor] = useState("");
+
+
+  
+  //Parei aqui
+  const [categoria, setCategoria] = useState();
+  const [valor, setValor] = useState();
+  const [descricao, setDescricao] = useState();
+  const [data, setData] = useState();
+
+  const {adicionar} = useContext(TransacaoContext)
+
+
   
   const dataListReceitas = [
     {key:'1', value:'Investimentos'},
@@ -77,10 +90,13 @@ const NovaReceita = () => {
               render={({ field: { onChange, value } }) => (
                 <SelectList
                   style={style.input}
-                  setSelected={(val) => onChange(val)}
+                  setSelected={(val) => {
+                    onChange(val);
+                    setCategoria(val);  // Adicione esta linha para chamar setCategoria ao alterar o texto
+                  }}
                   data={dataListReceitas}
                   save="value"
-                  value={value}
+                  value={categoria}
                   placeholder="Categoria"
                   boxStyles={{
                     borderRadius: 10,
@@ -131,7 +147,7 @@ const NovaReceita = () => {
                     borderWidth: errors.Descricao && 3,
                     borderColor: errors.Descricao && "red",
                   }}
-                  onChangeText={onChange}
+                  onChangeText={(text) => setValor(text)}
                   render={(props) => (
                     <TextInputMask
                       {...props}
@@ -141,7 +157,7 @@ const NovaReceita = () => {
                       }}
                     />
                   )}
-                  value={value}
+                  value={valor}
                   keyboardType="phone-pad"
                   label="Valor"
                   activeOutlineColor="#75B700"
@@ -163,8 +179,8 @@ const NovaReceita = () => {
               render={({ field: { onChange, value } }) => (
                 <TextInput
                   style={{ marginBottom: 10, height: 45 }}
-                  onChangeText={onChange}
-                  value={value}
+                  onChangeText={(text) => setDescricao(text)}
+                  value={descricao}
                   outlineStyle={{
                     borderRadius: 10,
                     backgroundColor: "white",
@@ -211,8 +227,8 @@ const NovaReceita = () => {
                       }}
                     />
                   )}
-                  value={value}
-                  onChangeText={(text) => onChange(text)}
+                  value={data}
+                  onChangeText={(text) => setData(text)}
                   label="Data"
                   activeOutlineColor="#75B700"
                   inputStyles={{ fontSize: 15, color: "#828387" }}
@@ -248,8 +264,12 @@ const NovaReceita = () => {
             <Text>Lembrete</Text>
           </View>
 
-          <View style={{ justifyContent: "center", alignItems: "center" }}>
-            <TouchableOpacity onPress={handleSubmit(handleSignIn)}>
+          <View style={{ justifyContent: "center", alignItems: "center"}}>
+            {/* Envolvi minhas duas chamadas de função em uma anonima */}
+            <TouchableOpacity onPress={ () => {
+              adicionar(categoria, valor, descricao, data);
+              handleSubmit(handleSignIn)()
+              }}>
               <View style={style.Button}>
                 <Text>Adicionar</Text>
               </View>
